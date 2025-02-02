@@ -1,0 +1,171 @@
+/* style.css */
+:root {
+    --primary: #2A2E35;    /* Dark navy */
+    --secondary: #2EBAC1;  /* Teal accent */
+    --bg: #F5F5F5;         /* Light gray background */
+    --text: #333333;       /* Dark text */
+    --text-light: #6B6B6B; /* Subdued text */
+    --white: #FFFFFF;
+}
+
+.dark-theme {
+    --primary: #1A1D21;    /* Darker navy */
+    --secondary: #2EBAC1;  /* Keep teal accent */
+    --bg: #2A2E35;         /* Dark background */
+    --text: #E0E0E0;       /* Light text */
+    --text-light: #A0A0A0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.theme-controls {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+.projects {
+    padding: 4rem 2rem;
+    background: var(--bg);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.project-card h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.tech-stack {
+    color: var(--secondary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.skills {
+    padding: 4rem 2rem;
+    background: rgba(0,0,0,0.03);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.skill-badge {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--white);
+    color: var(--secondary);
+}
+
+#themeToggle {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
