@@ -4,60 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soutrik Duttagupta</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --border: #000000;
+        }
+
+        .dark-theme {
+            --bg: #000000;
+            --text: #ffffff;
+            --border: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-section {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid var(--text);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            padding: 1rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .section.expanded .section-content {
+            max-height: 500px;
+            padding-bottom: 1rem;
+        }
+
+        .expand-icon {
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .section.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        #themeToggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .contact {
+            text-align: center;
+            padding: 2rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-icons a {
+            color: var(--text);
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <div class="profile-header">
-                <img src="profile-placeholder.jpg" alt="Soutrik Duttagupta" class="profile-img">
-                <h1>Soutrik Duttagupta</h1>
-            </div>
-            <button id="themeToggle">🌓</button>
-        </div>
-        <p class="tagline">Code • Design • Innovate</p>
+        <h1>Soutrik Duttagupta</h1>
+        <button id="themeToggle">◑</button>
     </header>
 
-    <main>
-        <section class="card" id="about">
+    <div class="profile-section">
+        <img src="profile-placeholder.jpg" alt="Profile" class="profile-img">
+        <p class="tagline">Build • Create • Innovate</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('about')">
             <h2>About Me</h2>
-            <div class="content">
-                <p>Full Stack Developer passionate about creating impactful solutions...</p>
-            </div>
-        </section>
-
-        <section class="card" id="experience">
-            <h2>Experience</h2>
-            <div class="content">
-                <!-- Add experience content -->
-            </div>
-        </section>
-
-        <section class="card" id="projects">
-            <h2>Projects</h2>
-            <div class="content">
-                <div class="project-item">
-                    <h3>Portfolio Website</h3>
-                    <p>Modern responsive portfolio</p>
-                </div>
-                <div class="project-item">
-                    <h3>Task Manager</h3>
-                    <p>Productivity application</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="contact">
-        <h2>Get in Touch</h2>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
+            <i class="fas fa-chevron-down expand-icon"></i>
         </div>
-    </footer>
+        <div class="section-content" id="about">
+            <p>Full stack developer passionate about creating efficient web solutions...</p>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('experience')">
+            <h2>Experience</h2>
+            <i class="fas fa-chevron-down expand-icon"></i>
+        </div>
+        <div class="section-content" id="experience">
+            <p>Professional experience details...</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header" onclick="toggleSection('projects')">
+            <h2>Projects</h2>
+            <i class="fas fa-chevron-down expand-icon"></i>
+        </div>
+        <div class="section-content" id="projects">
+            <p>Project details...</p>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-icons">
+            <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fas fa-phone"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        }
+
+        // Section Toggle
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId).parentElement;
+            section.classList.toggle('expanded');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') document.body.classList.add('dark-theme');
+            
+            // Theme button click
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 </html>
