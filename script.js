@@ -1,26 +1,22 @@
-function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-    localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-}
-
-function toggleSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.classList.toggle('expanded');
-}
-
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Set light mode by default
+    // Theme Management
+    const toggleTheme = () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+    };
+
+    // Set initial theme
     const savedTheme = localStorage.getItem('theme') || 'light';
-    document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-    
-    // Theme toggle
+    if (savedTheme === 'dark') document.body.classList.add('dark-theme');
+
+    // Event Listeners
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-    
-    // Section toggles
-    document.querySelectorAll('.section-header').forEach(header => {
+
+    // Section expand/collapse
+    document.querySelectorAll('.card h2').forEach(header => {
         header.addEventListener('click', () => {
-            const section = header.parentElement;
-            section.classList.toggle('expanded');
+            header.nextElementSibling.classList.toggle('expanded');
         });
     });
 });
