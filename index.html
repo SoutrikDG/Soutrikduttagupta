@@ -1,71 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
     <title>Soutrik Duttagupta</title>
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="stylesheet" href="style.css" 
-          integrity="sha384-Qr6Ckj6CmKCAGn5QU0L1zXWbdH4RqnvBGHaVj+9zE/FyqFgVCLTGGJsXw8oW5M9" 
-          crossorigin="anonymous">
+    <!-- Remove preload tags for now -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
-          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
           crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Add Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Soutrik Duttagupta</h1>
-        <button id="themeToggle">◑</button>
+        <div class="header-right">
+            <a href="https://drive.google.com/file/d/1NntgamKL82rZ1tNr6n_cy7o9YH341RLp/view?usp=sharing" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="cv-link" 
+               aria-label="View CV">
+                <i class="fas fa-file-alt"></i>
+                <span>CV</span>
+            </a>
+            <button id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </header>
 
     <div class="profile-section">
-        <img src="profile.jpg" alt="Profile" class="profile-img">
-        <p class="tagline">Build • Create • Innovate</p>
+        <div class="profile-image">
+            <img src="profile.jpg" alt="Profile Picture">
+        </div>
+        <p class="tagline">"I explore problems and the world."</p>
     </div>
 
-    <div class="section" id="about">
-        <div class="section-header">
-            <h2>About Me</h2>
-            <i class="fas fa-chevron-down expand-icon"></i>
-        </div>
-        <div class="section-content">
-            <p>Loading content...</p>
-        </div>
-    </div>
+    <main>
+        <section class="content-section" id="about">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+                <!-- Content loaded via JavaScript -->
+            </div>
+        </section>
 
-    <div class="section" id="experience">
-        <div class="section-header">
-            <h2>Experience</h2>
-            <i class="fas fa-chevron-down expand-icon"></i>
-        </div>
-        <div class="section-content">
-            <p>Loading content...</p>
-        </div>
-    </div>
+        <section class="content-section" id="experience">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+                <!-- Content loaded via JavaScript -->
+            </div>
+        </section>
 
-    <div class="section" id="projects">
-        <div class="section-header">
-            <h2>Projects</h2>
-            <i class="fas fa-chevron-down expand-icon"></i>
-        </div>
-        <div class="section-content">
-            <p>Loading content...</p>
-        </div>
-    </div>
+        <section class="content-section" id="projects">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+                <ul class="project-list">
+                    <li>
+                        <span class="project-title">Image Analysis Pipeline</span>
+                        <span class="company-badge personal">Personal Project</span>
+                    </li>
+                    <li>
+                        <span class="project-title">Customer Lifetime Value (CLV) Estimation</span>
+                        <span class="company-badge">Tredence Inc.</span>
+                    </li>
+                    <li>
+                        <span class="project-title">Retention Lifecycle Recommendations</span>
+                        <span class="company-badge">Tredence Inc.</span>
+                    </li>
+                    <li>
+                        <span class="project-title">Reactivation Lifecycle Engine</span>
+                        <span class="company-badge">Tredence Inc.</span>
+                    </li>
+                    <li>
+                        <span class="project-title">Depth of Discount Propensity</span>
+                        <span class="company-badge">Tredence Inc.</span>
+                    </li>
+                </ul>
+                <a href="projects.html" class="read-more">Read More</a>
+            </div>
+        </section>
 
-    <div class="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact-icons">
-            <a href="mailto:your@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <p class="copyright">© <span id="current-year"></span> Soutrik Duttagupta</p>
-    </div>
+        <section class="contact-section">
+            <h2>Get in Touch</h2>
+            <div class="contact-links">
+                <a href="mailto:soutrikduttagupta@gmail.com" class="contact-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                
+                <div class="contact-icon phone-container">
+                    <i class="fas fa-phone"></i>
+                    <div class="phone-dropdown">
+                        <span>+91-9007405689</span>
+                    </div>
+                </div>
 
-    <script src="script.js" 
-            integrity="sha384-JcXHNUkw0YAXDhWVtjWXbmxQCXMnLWd5K4qKzPQwXGC+oHv+pHp+nG4SGDXWfAp" 
-            crossorigin="anonymous"></script>
+                <a href="https://www.linkedin.com/in/soutrik-duttagupta/" target="_blank" rel="noopener noreferrer" class="contact-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="current-year">2025</span> Soutrik Duttagupta. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
