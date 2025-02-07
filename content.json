@@ -1,5 +1,84 @@
 {
-    "about": "Full stack developer passionate about creating efficient and scalable web solutions. Specializing in modern JavaScript frameworks and cloud technologies.",
-    "experience": "5+ years of experience in full-stack development. Currently working as a Senior Developer at Tech Corp, leading cross-functional teams in building enterprise applications.",
-    "projects": "Developed a real-time collaboration tool with 50k+ users. Created an open-source analytics library with 1k+ GitHub stars. Built a progressive web app for healthcare management."
+    "about": {
+        "paragraphs": [
+            "Data whisperer by day, problem-solver by night. For the past 3.5 years, I've been immersed in Data Analytics—digging deep into numbers to uncover insights that matter.",
+            "My curiosity drives me to constantly study, research, and open source my findings in Computer Vision and Natural Language Processing, as I aspire to solve real-life challenges through AI.",
+            "When I'm not decoding data puzzles, I'm out exploring high-altitude trails, capturing fleeting moments through my lens, or cheering on my favorite football team. Discover more of my visual journey on my <a href='https://500px.com/p/soutrikduttagupta' target='_blank' rel='noopener noreferrer'>photography page</a>."
+        ]
+    },
+    "experience": {
+        "companies": [
+            {
+                "name": "Tredence Inc.",
+                "positions": [
+                    {
+                        "title": "Analytics Consultant",
+                        "period": "Jan 2023 - Present",
+                        "points": [
+                            "Architected ML pipeline with Airflow, Kubernetes, and MLflow for CLTV prediction, processing 10TB+ data with 99.9% uptime",
+                            "Built XGBoost models with Redis caching and FastAPI endpoints, serving 10K+ daily predictions at <100ms latency",
+                            "Developed analytical frameworks for customer insights across 2000+ locations, optimizing SQL queries for 150% runtime improvement",
+                            "Automated reporting workflows using Docker and Kubernetes, reducing processing time by 30% across 90+ dashboards"
+                        ]
+                    },
+                    {
+                        "title": "Data Analyst",
+                        "period": "June 2021 - Dec 2022",
+                        "points": [
+                            "Executed full-scale Data Migration, transferring 6+ Data Sources and 50+ Dashboards from Teradata to Google Cloud Platform",
+                            "Designed and developed 60+ Tableau KPI Dashboards tailored for retail, covering critical metrics like sales, traffic, inventory planning, reward programs, employee performance",
+                            "Engineered and automated a robust pipeline for daily KPI delivery to decision-makers via customizable email notifications"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Damodar Valley Corporation",
+                "positions": [
+                    {
+                        "title": "Software Development Intern",
+                        "period": "June 2019 - July 2019",
+                        "location": "Kolkata, India",
+                        "points": [
+                            "Developed a Login Portal for employees with database access and automated email notifications",
+                            "Leveraged JSP, Servlets and Java, employing the MVC architecture to ensure seamless user interaction and strong backend integration",
+                            "Implemented an employee notification system using the JavaMail API to automate email alerts"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "projects": [
+        {
+            "title": "Image Content Analysis System",
+            "company": "Personal Project",
+            "description": "Developed a Python-based pipeline that combines computer vision and NLP for image understanding. The system classifies images using a fine-tuned ResNet model, generates descriptive summaries using BART, and performs secondary classification for validation. Containerized the solution with Docker and exposed it as a REST API.",
+            "tags": ["Python", "PyTorch", "Docker", "REST API", "OpenCV", "Transformers"]
+        },
+        {
+            "title": "Customer Lifetime Value (CLV) Estimation",
+            "company": "Tredence Inc.",
+            "description": "Implemented Fader & Hardie BTYD model for probabilistic CLV prediction using Cloud Composer and BigQuery.",
+            "tags": ["BigQuery", "Cloud Composer", "Statistical Modeling", "Python"]
+        },
+        {
+            "title": "Retention Lifecycle Recommendations",
+            "company": "Tredence Inc.",
+            "description": "Developed recommendation system using cosine similarity and customer preference vectors to encourage repeat purchases.",
+            "tags": ["Dataproc", "Pandas", "Scikit-learn", "Machine Learning"]
+        },
+        {
+            "title": "Reactivation Lifecycle Engine",
+            "company": "Tredence Inc.",
+            "description": "Built personalized recommendation engine using Spark ALS for re-engaging dormant customers.",
+            "tags": ["Spark", "Dataproc", "ALS", "Collaborative Filtering"]
+        },
+        {
+            "title": "Depth of Discount Propensity",
+            "company": "Tredence Inc.",
+            "description": "Developed ML models in Vertex AI to predict coupon redemption probability and optimize discount allocation.",
+            "tags": ["Vertex AI", "Machine Learning", "Predictive Analytics"]
+        }
+    ]
 }
