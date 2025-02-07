@@ -4,127 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soutrik Duttagupta</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --text: #000000;
-            --border: #000000;
-        }
-
-        .dark-theme {
-            --bg: #000000;
-            --text: #ffffff;
-            --border: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.4;
-        }
-
-        header {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .profile-section {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 2px solid var(--text);
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-header {
-            padding: 1rem 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0;
-        }
-
-        .section.expanded .section-content {
-            max-height: 500px;
-            padding-bottom: 1rem;
-        }
-
-        .expand-icon {
-            transform: rotate(0deg);
-            transition: transform 0.3s ease;
-        }
-
-        .section.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        #themeToggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--text);
-        }
-
-        .contact {
-            text-align: center;
-            padding: 2rem 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .contact-icons a {
-            color: var(--text);
-            font-size: 1.5rem;
-        }
-    </style>
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="stylesheet" href="style.css" 
+          integrity="sha384-Qr6Ckj6CmKCAGn5QU0L1zXWbdH4RqnvBGHaVj+9zE/FyqFgVCLTGGJsXw8oW5M9" 
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <header>
@@ -133,71 +20,52 @@
     </header>
 
     <div class="profile-section">
-        <img src="profile-placeholder.jpg" alt="Profile" class="profile-img">
+        <img src="profile.jpg" alt="Profile" class="profile-img">
         <p class="tagline">Build • Create • Innovate</p>
     </div>
 
-    <div class="section">
-        <div class="section-header" onclick="toggleSection('about')">
+    <div class="section" id="about">
+        <div class="section-header">
             <h2>About Me</h2>
             <i class="fas fa-chevron-down expand-icon"></i>
         </div>
-        <div class="section-content" id="about">
-            <p>Full stack developer passionate about creating efficient web solutions...</p>
+        <div class="section-content">
+            <p>Loading content...</p>
         </div>
     </div>
 
-    <div class="section">
-        <div class="section-header" onclick="toggleSection('experience')">
+    <div class="section" id="experience">
+        <div class="section-header">
             <h2>Experience</h2>
             <i class="fas fa-chevron-down expand-icon"></i>
         </div>
-        <div class="section-content" id="experience">
-            <p>Professional experience details...</p>
+        <div class="section-content">
+            <p>Loading content...</p>
         </div>
     </div>
 
-    <div class="section">
-        <div class="section-header" onclick="toggleSection('projects')">
+    <div class="section" id="projects">
+        <div class="section-header">
             <h2>Projects</h2>
             <i class="fas fa-chevron-down expand-icon"></i>
         </div>
-        <div class="section-content" id="projects">
-            <p>Project details...</p>
+        <div class="section-content">
+            <p>Loading content...</p>
         </div>
     </div>
 
     <div class="contact">
         <h2>Get in Touch</h2>
         <div class="contact-icons">
-            <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
-            <a href="#"><i class="fas fa-phone"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:your@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
+        <p class="copyright">© <span id="current-year"></span> Soutrik Duttagupta</p>
     </div>
 
-    <script>
-        // Theme Toggle
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        }
-
-        // Section Toggle
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId).parentElement;
-            section.classList.toggle('expanded');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') document.body.classList.add('dark-theme');
-            
-            // Theme button click
-            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-        });
-    </script>
+    <script src="script.js" 
+            integrity="sha384-JcXHNUkw0YAXDhWVtjWXbmxQCXMnLWd5K4qKzPQwXGC+oHv+pHp+nG4SGDXWfAp" 
+            crossorigin="anonymous"></script>
 </body>
 </html>
