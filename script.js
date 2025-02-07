@@ -1,121 +1,120 @@
-class Portfolio {
-    constructor() {
-        this.initTheme();
-        this.initSections();
-        this.initObservers();
-        this.initDynamicContent();
-        this.addKeyboardNavigation();
-        this.addCopyrightYear();
-    }
-
-    // Theme management
-    initTheme() {
-        this.themeToggle = document.getElementById('themeToggle');
-        this.themeToggle.addEventListener('click', () => this.toggleTheme());
-        this.setInitialTheme();
-    }
-
-    setInitialTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-        this.animateThemeToggle(savedTheme);
-    }
-
-    toggleTheme() {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        this.animateThemeToggle(isDark ? 'dark' : 'light');
-    }
-
-    animateThemeToggle(theme) {
-        this.themeToggle.style.transform = theme === 'dark' ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
-
-    // Section management
-    initSections() {
-        this.sections = document.querySelectorAll('.section');
-        this.sections.forEach(section => {
-            const header = section.querySelector('.section-header');
-            header.addEventListener('click', () => this.toggleSection(section));
-            this.restoreSectionState(section);
-        });
-    }
-
-    toggleSection(section) {
-        const wasExpanded = section.classList.contains('expanded');
-        section.classList.toggle('expanded', !wasExpanded);
-        this.saveSectionState(section);
-    }
-
-    saveSectionState(section) {
-        const state = section.classList.contains('expanded');
-        localStorage.setItem(section.id, state);
-    }
-
-    restoreSectionState(section) {
-        const state = localStorage.getItem(section.id) === 'true';
-        section.classList.toggle('expanded', state);
-    }
-
-    // Scroll animations
-    initObservers() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.profile-section, .section').forEach(el => {
-            observer.observe(el);
-        });
-    }
-
-    // Dynamic content
-    async initDynamicContent() {
-        try {
-            const response = await fetch('content.json');
-            const content = await response.json();
-            this.populateContent(content);
-        } catch (error) {
-            console.error('Error loading content:', error);
-            this.showContentError();
-        }
-    }
-
-    populateContent(content) {
-        document.querySelector('#about .section-content p').textContent = content.about;
-        document.querySelector('#experience .section-content p').textContent = content.experience;
-        document.querySelector('#projects .section-content p').textContent = content.projects;
-    }
-
-    showContentError() {
-        const sections = document.querySelectorAll('.section-content p');
-        sections.forEach(p => {
-            p.textContent = 'Content failed to load. Please try refreshing the page.';
-        });
-    }
-
-    // Accessibility
-    addKeyboardNavigation() {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const focusedSection = document.activeElement.closest('.section-header');
-                if (focusedSection) {
-                    this.toggleSection(focusedSection.parentElement);
-                }
-            }
-        });
-    }
-
-    // Copyright year
-    addCopyrightYear() {
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+// Global toggle function
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const content = section.querySelector('.section-content');
+    const icon = section.querySelector('.fa-chevron-down');
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        content.style.display = 'none';
+        icon.style.transform = 'rotate(-90deg)';
     }
 }
 
-// Initialize when ready
-document.addEventListener('DOMContentLoaded', () => new Portfolio());
+class Portfolio {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Set dark theme as default
+        document.documentElement.setAttribute('data-theme', 'dark');
+        
+        this.setupThemeToggle();
+        this.setupSectionToggles();
+        this.loadContent();
+        this.setupCopyrightYear();
+    }
+
+    setupSectionToggles() {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            const header = section.querySelector('.section-header');
+            const content = section.querySelector('.section-content');
+            const icon = header.querySelector('.fa-chevron-down');
+            
+            // Initially collapse all sections
+            content.style.display = 'none';
+            icon.style.transform = 'rotate(-90deg)';
+            
+            header.addEventListener('click', () => {
+                const isOpen = content.style.display === 'block';
+                content.style.display = isOpen ? 'none' : 'block';
+                icon.style.transform = isOpen ? 'rotate(-90deg)' : 'rotate(0)';
+            });
+        });
+    }
+
+    async loadContent() {
+        try {
+            const response = await fetch('content.json');
+            if (!response.ok) throw new Error('Failed to load content');
+            const content = await response.json();
+            
+            // Load about content
+            const aboutContent = document.querySelector('#about .section-content');
+            if (aboutContent && content.about?.paragraphs) {
+                aboutContent.innerHTML = content.about.paragraphs
+                    .map(paragraph => `<p>${paragraph}</p>`)
+                    .join('');
+            }
+            
+            // Load experience content
+            const experienceContent = document.querySelector('#experience .section-content');
+            if (experienceContent && content.experience?.companies) {
+                experienceContent.innerHTML = content.experience.companies
+                    .map(company => `
+                        <div class="company">
+                            <h3>${company.name}</h3>
+                            ${company.positions.map(position => `
+                                <div class="position">
+                                    <h4>${position.title}</h4>
+                                    <p class="period">${position.period}</p>
+                                    <ul>
+                                        ${position.points.map(point => `
+                                            <li>${point}</li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `).join('');
+            }
+        } catch (error) {
+            console.error('Error loading content:', error);
+        }
+    }
+
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Set initial icon based on theme
+        icon.classList.remove('fa-moon', 'fa-sun');
+        icon.classList.add(document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon');
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            // Update icon
+            icon.classList.toggle('fa-sun');
+            icon.classList.toggle('fa-moon');
+        });
+    }
+
+    setupCopyrightYear() {
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new Portfolio();
+});
