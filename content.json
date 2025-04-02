@@ -12,9 +12,11 @@
                 "name": "Tredence Inc.",
                 "positions": [
                     {
-                        "title": "Analytics Consultant",
+                        "title": "Data Scientist",
                         "period": "Jan 2023 - Present",
                         "points": [
+                            "Developed a custom accelerator abstraction layer that enables seamless deployment of ML workloads across CPUs, GPUs, and TPUs, improving cross-platform compatibility.",
+                            "Devised an adaptive accelerator framework that dynamically adjusts resource allocation based on workload patterns, ensuring optimal performance and energy usage while accommodating diverse ML models.",
                             "Architected ML pipeline with Airflow, Kubernetes, and MLflow for CLTV prediction, processing 10TB+ data with 99.9% uptime",
                             "Built XGBoost models with Redis caching and FastAPI endpoints, serving 10K+ daily predictions at <100ms latency",
                             "Developed analytical frameworks for customer insights across 2000+ locations, optimizing SQL queries for 150% runtime improvement",
@@ -22,9 +24,10 @@
                         ]
                     },
                     {
-                        "title": "Data Analyst",
+                        "title": "Business Intelligence Engineer",
                         "period": "June 2021 - Dec 2022",
                         "points": [
+                            "Engineered end-to-end web applications using React.js and Next.js, integrating RESTful APIs and WebSockets for real-time KPI monitoring, serving 2000+ users across various store operations domains.",
                             "Executed full-scale Data Migration, transferring 6+ Data Sources and 50+ Dashboards from Teradata to Google Cloud Platform",
                             "Designed and developed 60+ Tableau KPI Dashboards tailored for retail, covering critical metrics like sales, traffic, inventory planning, reward programs, employee performance",
                             "Engineered and automated a robust pipeline for daily KPI delivery to decision-makers via customizable email notifications"
