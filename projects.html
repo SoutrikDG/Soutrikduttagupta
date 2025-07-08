@@ -158,30 +158,7 @@
         <p>© <span id="current-year">2025</span> Soutrik Duttagupta. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Simple theme toggle and copyright year for projects page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme toggle
-            const themeToggle = document.getElementById('themeToggle');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-            
-            if (prefersDark.matches) {
-                document.body.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-
-            themeToggle.addEventListener('click', () => {
-                const isDark = document.body.getAttribute('data-theme') === 'dark';
-                document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-                themeToggle.innerHTML = isDark ? 
-                    '<i class="fas fa-moon"></i>' : 
-                    '<i class="fas fa-sun"></i>';
-            });
-
-            // Copyright year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
-    </script>
+    <script src="script.js"></script>
     <script src="projects.js"></script>
 </body>
 </html> 
